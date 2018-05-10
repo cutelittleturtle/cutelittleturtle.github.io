@@ -1,0 +1,94 @@
+@import url("index-ver.css");
+@import url("index-land.css");
+
+/* swiper css */
+html, body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    font-size: 18px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+/* shared css */
+.bk_archive {
+     width: 5%;
+     height: auto;
+     position: absolute;
+     top: 2%;
+     right: 4%;
+}
+
+.bk_archive_l {
+     width: 5%;
+     height: auto;
+     position: absolute;
+     top: 2%;
+     left: 4%;
+}
+
+.responsive-width {
+        font-size: 1.5vw;
+}
+
+.ghost-button {
+	background-color: transparent;
+  display: inline-block;
+  padding: 1%;
+  color: #fff;
+  border: 1px solid #fff;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  text-decoration: none;
+  transition: background-color 0.2s ease-out,
+              color 0.2s ease-out;
+}
+
+.ghost-button:hover,
+.ghost-button:active {
+  color: #fff;
+	opacity: 0.5;
+  transition: background-color 0.3s ease-in,
+              color 0.3s ease-in;
+}
+
+/* disable css for <a> */
+a {color:inherit; text-decoration: none;}
+
+@media screen and (min-width:700px)  {
+    .swiper-pagination-bullet {
+        border: white solid 1px;
+        width: 12px;
+        height: 12px;
+    }
+}

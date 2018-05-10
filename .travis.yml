@@ -1,0 +1,48 @@
+language: node_js  #设置语言
+node_js: stable  #设置相应的版本
+
+language: python
+python: 3.6
+
+group: deprecated-2017Q4
+
+cache:
+    directories:
+    - node_modules
+    - pip
+
+branches:
+    only:
+      - source
+
+install:
+  - wget ${pandoc}
+  - sudo dpkg -i pandoc*.deb
+  - npm install  #安装hexo及插件
+  - npm install hexo-cli -g
+  - npm install hexo-renderer-pandoc --save
+  - python -m pip install requests
+  - python -m pip install bs4
+  - python -m pip install lxml
+
+before_script:
+    - cd python-codes
+    - python build_archive.py
+    - cd ..
+
+script:
+    - hexo cl  #清除
+    - hexo g  --config source/_data/next.yml #生成
+
+after_script:
+    - cd public
+    - git init
+    - git config user.name 'cutelittleturtle'
+    - git config user.email '31291893+cutelittleturtle@users.noreply.github.com'
+    - git add .
+    - git commit -m 'Site updated'
+    - git push -q -f "https://${GH_TOKEN}@${GH_REF}" master:master
+env:
+  global:
+   - GH_REF: github.com/cutelittleturtle/cutelittleturtle.github.io.git  #设置GH_REF，注意更改yourname
+   - pandoc: https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb
